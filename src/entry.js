@@ -18,9 +18,19 @@ window.reactBridge = {
 	dispatcher: require('./common/dispatcher').default
 };
 
+
+import './css/loadcss';
+
 //Register Components
 [
+	"MainApp",
 	"Counter",
+	"About",
+	"UserList",
+	"Header",
+	"ContentArea",
+	"LeftNav",
+	"Header",
 	"StoreLoader"
 ].map(function (v, i) {
 	window.reactBridge.components[v] = require('./components/' + v + '/' + v).default;

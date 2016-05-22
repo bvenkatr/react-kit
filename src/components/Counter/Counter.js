@@ -9,7 +9,10 @@ class Counter extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = CounterStore.getState();
+		console.log("Initial State", this.state);
+		console.log("%c Counter Component -> Init ", 'background: red; color: white');
 	}
+
 	componentDidMount() {
 		this.unsub = CounterStore.onChange(()=> {
 			this.setState(CounterStore.getState());
@@ -18,6 +21,7 @@ class Counter extends Component {
 
 	componentWillUnmount() {
 		this.unsub();
+		console.log("%c Counter Component -> UnMount ", 'background: black; color: yellow');
 	}
 
 	add() {
@@ -29,6 +33,7 @@ class Counter extends Component {
 	}
 
 	render() {
+		console.log("%c Counter Component -> Render ", 'background: black; color: pink');
 		return (
 				<div styleName='container'>
 					Counter Value {this.state.count}

@@ -3,36 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>React Kit Demo</title>
-	<link rel="stylesheet" href="/static/app.css">
+	<link rel="stylesheet" href="/app.css">
 </head>
 <body>
-<h1>React Kit Demo</h1>
-<div id="root"></div>
-<script src="/static/bundle.js"></script>
+<div style="height: 100%;margin: 0" id="root"></div>
+<script src="/bundle.js"></script>
 <script>
-
-	var moduleName = window.location.search.split("?m=")[1];
-	var apiName = window.location.search.split("?api=")[1];
-	var storeName = window.location.search.split("?store=")[1];
 	var node = document.getElementById('root');
-
-	if (moduleName !== undefined) {
-		var moduleReactComponent = window.reactBridge.components[moduleName];
-//		if (typeof moduleReactComponent !== "function") {
-//			alert("Error,Module not found ," + moduleName);
-//		}
-		ReactDOM.render(React.createElement(moduleReactComponent, null), node);
-
-	} else if (storeName !== undefined) {
-		ReactDOM.render(React.createElement(window.reactBridge.components.StoreLoader, {
-			storeName: storeName
-		}), node);
-	} else {
-		alert("Unable to know what to do - Possible syntax \n" +
-				"http://localhost:8000/?store=CounterStore\n" +
-				"http://localhost:8000/?m=Counter\n"
-		)
-	}
+	ReactDOM.render(React.createElement(window.reactBridge.components.MainApp, null), node);
 </script>
 </body>
 </html>
+<script>
+	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+			':35731/livereload.js?snipver=1"></' + 'script>')
+</script>
